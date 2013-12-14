@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 3-dic-2011 17.38.37 by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="spring.domain.Persona" table="persona" catalog="familiare">
+        <id name="idPersona" type="java.lang.Integer">
+            <column name="idPersona" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="gruppopermessi" class="spring.domain.Gruppopermessi" fetch="select">
+            <column name="idGruppo" not-null="true" />
+        </many-to-one>
+        <property name="nome" type="string">
+            <column name="nome" length="20" not-null="true" />
+        </property>
+        <property name="cognome" type="string">
+            <column name="cognome" length="25" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="50" not-null="true" />
+        </property>
+        <property name="eliminato" type="java.lang.Integer">
+            <column name="eliminato" />
+        </property>
+                <set name="spesas" table="spesa" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idPersona" not-null="true" />
+            </key>
+            <one-to-many class="spring.domain.Spesa" />
+        </set>
+    </class>
+</hibernate-mapping>

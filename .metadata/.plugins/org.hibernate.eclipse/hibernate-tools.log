@@ -1,0 +1,3 @@
+2011-12-03 17:26:27,090 0      [       Worker-2] WARN  UserSuppliedConnectionProvider  - No connection properties specified - the user must supply JDBC connections
+2011-12-03 17:26:29,930 2840   [      Worker-18] WARN  UserSuppliedConnectionProvider  - No connection properties specified - the user must supply JDBC connections
+2011-12-03 17:27:58,025 90935  [      Worker-16] WARN  UserSuppliedConnectionProvider  - No connection properties specified - the user must supply JDBC connections

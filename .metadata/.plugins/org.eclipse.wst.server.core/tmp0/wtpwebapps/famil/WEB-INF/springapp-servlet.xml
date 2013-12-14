@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+       
+  <!-- the application context definition for the springapp DispatcherServlet -->    
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
+        <property name="prefix" value="/WEB-INF/jsp/"></property>
+        <property name="suffix" value=".jsp"></property>       
+   </bean>  
+     
+    	<bean id="urlMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">				
+			<props>	
+							
+			<prop key="/log.htm">LoginController</prop>
+			<prop key="/login.htm">LoginController</prop>						
+			<prop key="/menu.htm">LoginController</prop>
+			<prop key="/esci.htm">LoginController</prop>
+			
+			<prop key="/aggiungiSpesa.htm">PersonaController</prop>				
+			<prop key="/aggiungiEntrata.htm">PersonaController</prop>
+			<prop key="/inserisciEntrata.htm">PersonaController</prop>
+			<prop key="/inserisciSpesa.htm">PersonaController</prop>			
+			<prop key="/visualizzaDettaglioPerAnno.htm">PersonaController</prop>
+			<prop key="/vaiAVisualizzaDettaglio.htm">PersonaController</prop>
+			
+			
+			<prop key="/recuperaEntrata.htm">PersonaController</prop>
+			<prop key="/modificaE.htm">PersonaController</prop>
+			
+			
+				
+			<prop key="/storico.htm">PersonaController</prop>
+						
+			<prop key="/inserisciGrafico.htm">ChartController</prop>
+			<prop key="/vaiAVisualizzaGrafico.htm">ChartController</prop>
+			<prop key="/vediGrafico.htm">ChartController</prop>
+			
+			</props>			
+		</property>
+	</bean>
+	   
+	<bean id="handlerResolver"
+		class="org.springframework.web.servlet.mvc.multiaction.PropertiesMethodNameResolver">
+		<property name="mappings">		
+			<props>	
+							
+				<prop key="/log.htm">effettuaLogin</prop>
+				<prop key="/menu.htm">ridirigi</prop>
+				<prop key="/login.htm">restituisciLogin</prop>				
+				<prop key="/esci.htm">ridirigiLogin</prop>
+				
+				<prop key="/aggiungiSpesa.htm">vaiInserisciSpesa</prop>					
+				<prop key="/aggiungiEntrata.htm">vaiInserisciEntrata</prop>
+				<prop key="/inserisciSpesa.htm">inserisciSpesa</prop>
+				<prop key="/inserisciEntrata.htm">inserisciEntrata</prop>				
+				<prop key="/visualizzaDettaglioPerAnno.htm">restituisciPaginaDettaglio</prop>
+					
+				<prop key="/vaiAVisualizzaDettaglio.htm">recuperoEntrate</prop>	
+				
+				<prop key="/recuperaEntrata.htm">modificaEntr</prop>
+				<prop key="/modificaE.htm">modificaSpesaInDettaglioPerAnno</prop>
+				
+				
+				<prop key="/storico.htm">recuperaStorico</prop>					
+				<prop key="/inserisciGrafico.htm">restituisciGrafico</prop>			
+				<prop key="/vaiAVisualizzaGrafico.htm">vaiInserisciGrafico</prop>
+				<prop key="/vediGrafico.htm">viewDati</prop>
+			</props>
+		</property>
+	</bean>
+   	<bean id="UtilServiceTarget" class="spring.service.UtilServiceImpl">
+		<property name="dataAccess" ref="dataAccess" />
+	</bean>
+	
+	<bean id="UtilService" parent="transactionProxy">		
+		<property name="target" ref="UtilServiceTarget" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="*">PROPAGATION_REQUIRED</prop>
+			</props>				
+		</property>
+	</bean>			
+	      
+     <bean name="LoginController" class="spring.web.LoginController">
+     <property name="methodNameResolver" ref="handlerResolver"/>  
+     <property name="service" ref="UtilService" />  
+     </bean> 
+
+      <bean name="PersonaController" class="spring.web.PersonaController">
+     <property name="methodNameResolver" ref="handlerResolver"/>  
+     <property name="service" ref="UtilService" />  
+     </bean> 
+     
+     <bean name="ChartController" class="spring.web.ChartController">
+     <property name="methodNameResolver" ref="handlerResolver"/>  
+     <property name="service" ref="UtilService" />  
+     </bean> 
+     
+</beans>

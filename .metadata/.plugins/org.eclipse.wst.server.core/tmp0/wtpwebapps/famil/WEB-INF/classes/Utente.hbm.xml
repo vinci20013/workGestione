@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 24-giu-2011 14.40.01 by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="spring.domain.Utente" table="UTENTE">
+        <id name="idUtente" type="java.lang.Integer">
+            <column name="IDUTENTE" />
+            <generator class="identity" />
+        </id>
+        <property name="idPersona" type="java.lang.Integer">
+            <column name="IDPERSONA" />
+        </property>
+        <property name="username" type="java.lang.String">
+            <column name="USERNAME" />
+        </property>
+        <property name="password" type="java.lang.String">
+            <column name="PASSWORD" />
+        </property>
+            <property name="eliminato" type="java.lang.Integer">
+            <column name="eliminato" />
+        </property>
+    </class>
+</hibernate-mapping>
+
