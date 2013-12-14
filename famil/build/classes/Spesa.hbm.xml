@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 3-dic-2011 17.38.37 by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="spring.domain.Spesa" table="spesa" catalog="familiare">    
+        <composite-id name="id" class="spring.domain.SpesaId">        
+            <key-property name="idSpesa" type="java.lang.Integer">
+                <column name="idSpesa" />                
+            </key-property>
+            <key-property name="idPersona" type="java.lang.Integer">
+                <column name="idPersona" />
+            </key-property>            
+        </composite-id>
+		<many-to-one name="persona" class="spring.domain.Persona" update="false" insert="false" fetch="select">
+        <column name="idPersona" not-null="true" />
+        </many-to-one>
+        <property name="dat" type="date">
+            <column name="dat" length="10" not-null="true" />
+        </property>
+        <property name="importo" type="double">
+            <column name="importo" not-null="true" />
+        </property>
+        <property name="tipologia" type="string">
+            <column name="tipologia" length="100" not-null="true" />
+        </property>
+        <property name="descrizione" type="string">
+            <column name="descrizione" length="200" />
+        </property>
+        <property name="eliminato" type="java.lang.Integer">
+            <column name="eliminato" />
+        </property>
+             <property name="positiva" type="java.lang.Integer">
+            <column name="positiva" />
+        </property>
+    </class>
+</hibernate-mapping>

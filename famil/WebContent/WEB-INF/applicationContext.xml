@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+	<!-- DATA SOURCE -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/familiare" />
+		<property name="username" value="root" />
+		<property name="password" value="vinci" />
+	</bean>
+
+	<!-- SessionFactory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mappingResources">
+			<list>
+				<value>Gruppopermessi.hbm.xml</value>				
+				<value>Persona.hbm.xml</value>
+				<value>Spesa.hbm.xml</value>
+				<value>Utente.hbm.xml</value>			
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
+				<!-- <prop key="hibernate.hbm2ddl.auto">update</prop>-->						
+			</props>
+		</property>
+	</bean>
+	
+	<!-- Hibernate Template -->
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+    <property name="sessionFactory">
+        <ref bean="sessionFactory"/>
+    </property>
+	</bean>
+
+	<!-- DAO Object -->
+	<bean id="dataAccess" class="spring.reposity.HibernateDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+		<property name="hibernateTemplate">
+        <ref bean="hibernateTemplate"/>    
+    </property>
+	</bean>
+
+	<!-- TransactionManager-->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<!--  Transactional proxy -->       
+	<bean id="transactionProxy" abstract="true"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="transactionManager" />
+	</bean>
+
+	<bean id="service" class="spring.service.UtilServiceImpl" />
+		
+	<bean id="utenteLoggatoSession" class="spring.domain.Persona" scope="session"> 		        
+    </bean>
+	
+</beans>
+

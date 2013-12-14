@@ -1,0 +1,191 @@
+@CHARSET "ISO-8859-1";
+
+body { 	  
+	   font-family: "Trebuchet MS";
+	   font-size: 11pt;
+	   color: #2a76e4;
+	   text-decoration: none;
+	   	   
+	   }
+	
+h4 { font-size: 18pt;	
+    font-family: "Trebuchet MS"; 
+    color: #2a76e4;  
+}
+.ggg { font-size: 11pt;	
+    font-family: "Trebuchet MS";  
+    color: #000000;  
+}	
+h2 {font-size: 26pt;
+	font-style: italic;
+    ffont-family: "Trebuchet MS";   
+}
+
+#home{	position: absolute;
+		width: 350px; 
+		top: 80px; 
+		left: 620px;		
+}
+
+#home a{
+text-decoration: none;
+color: #ffffff;
+}
+
+.tabella{
+	empty-cells:show;
+	border:0px solid #2B8CD5;
+	margin-left:0;
+	margin-right:0;
+	margin-top:0px;
+	width:300px;	
+}
+
+.tabella1{
+	empty-cells:show;
+	border:0px solid #2B8CD5;
+	margin-left:0;
+	margin-right:0;
+	margin-top:0px;
+	width:450px;	
+}
+
+
+.tabella2{
+	font-family:verdana, arial, sans-serif; 
+	color: #ffffff;
+    font-size:0.75em; 
+    line-height:1.5em; 
+	empty-cells:show;
+	border:1px solid #2a76cc;
+	margin-left:10;
+	margin-right:10;
+	margin-top:10px;
+	width:550px;
+	background : Silver;
+	
+}
+.tabella3{
+	border:0px solid #000000;
+	font-family: "Trebuchet MS";
+	font-size: 11pt;
+	color: #000000;
+	margin-left:470px;
+	margin-right:1px;
+	margin-top:1px;
+	width:550px;	
+}
+.tabella4{
+	
+	border:0px solid #000000;
+	font-family: "Trebuchet MS";
+	font-size: 11pt;
+	color: #000000;
+	margin-left:100px;
+	margin-right:1px;
+	margin-top:1px;
+	width:0px;
+		
+}
+.tabella2 tr{
+font-family:verdana, arial, sans-serif;
+color: #000000;
+}
+.rigaColor { 
+	   background-color: #ffffff;
+	   color: #000000;}
+	   
+.alternate { 
+	   background-color: #F5F5F5;
+	   color: #000000;}	
+	   
+.testaTabella { 
+	   background-color: #2a76cc;
+	   font-family:verdana, arial, sans-serif; 
+	   color: #ffffff;
+	   font-size:13px;}	   
+   
+
+.td_left {
+   width: 50%;
+   float: left;
+}
+
+.td_right {
+   width: 50%;
+   float: left;
+}
+#inserimento{ 	
+	position: absolute;
+	margin-left:180px;
+	margin-right:auto;
+	margin-top:130px;
+	width:700px;
+	font-size: 8pt;
+	font-family: helvetica;
+}
+
+.login {
+	position: absolute;
+	float:left;
+	width:20%;
+	height:30%;
+	top:25%;
+	left:30%;	
+}
+
+.username {
+	
+    background-image:url("../images/username_bg.png");
+	background-repeat: no-repeat;
+	background-color: transparent;
+	background-attachment: scroll;
+	background-position: 0pt 0px;
+	padding-left:20px;
+}
+
+.password {
+	background-image:url("../images/password_bg.png");
+	background-repeat: no-repeat;
+	background-color: transparent;
+	background-attachment: scroll;
+	background-position: 0pt 0px;
+	padding-left:20px;
+	}
+.username:hover {
+    background-image:url("../images/username_bg.png");
+	background-repeat: no-repeat;
+	background-color: transparent;
+	background-attachment: scroll;
+	background-position: 0pt -20px;
+	padding-left:20px;
+}
+
+.password:hover {
+    background-image:url("../images/password_bg.png");
+	background-repeat: no-repeat;
+	background-color: transparent;
+	background-attachment: scroll;
+	background-position: 0pt -20px;
+	padding-left:20px;
+}
+
+.log {
+	width:92px;
+	height:28px;
+	background-image:url("../images/loginButton.gif"); 		
+	overflow: hidden;
+	border: none;
+	cursor: pointer;
+}
+
+.errore {	
+	font-size: 11pt;
+	font-family: "Trebuchet MS";
+	color: #1b5592;
+	font-size: 10pt;
+	font-weight: 500;
+}
+.aButton {	
+	padding-left:10px;	
+}
